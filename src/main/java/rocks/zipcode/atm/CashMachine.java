@@ -29,7 +29,7 @@ public class CashMachine {
         );
     }
 
-    public void deposit(int amount) {
+    public void deposit(Double amount) {
         if (accountData != null) {
             tryCall(
                     () -> bank.deposit(accountData, amount),
@@ -38,7 +38,7 @@ public class CashMachine {
         }
     }
 
-    public void withdraw(int amount) {
+    public void withdraw(Double amount) {
         if (accountData != null) {
             tryCall(
                     () -> bank.withdraw(accountData, amount),
@@ -58,6 +58,26 @@ public class CashMachine {
         return accountData != null ? accountData.toString() : "Try account 1000 or 2000 and click submit.";
     }
 
+    public String displayAccountID() {
+        return accountData != null ? accountData.getAccountID() : "Account ID to be displayed";
+    }
+
+    public String displayAccountName() {
+        return accountData != null ? accountData.getAccountName() : "Account name to be displayed";
+    }
+
+    public String displayEmail() {
+        return accountData != null ? accountData.getEmail() : "Account email to be displayed";
+    }
+
+    public Double displayBalance() {
+        return accountData != null ? accountData.getBalance() : null;
+    }
+
+    public String displayBalanceMessage() {
+        return accountData.displayBalanceMessage();
+    }
+
     private <T> void tryCall(Supplier<ActionResult<T> > action, Consumer<T> postAction) {
         try {
             ActionResult<T> result = action.get();
@@ -72,4 +92,6 @@ public class CashMachine {
             System.out.println("Error: " + e.getMessage());
         }
     }
+
+
 }
