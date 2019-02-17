@@ -40,5 +40,14 @@ public final class AccountData {
                 "Name: " + name + '\n' +
                 "Email: " + email + '\n' +
                 "Balance: " + balance;
+
+    }
+
+    public String getAccountID() {
+        return "Account id: " + id;
+    }
+
+    public String getAccountName()  {
+        return "Account name: " + name;
     }
 }
